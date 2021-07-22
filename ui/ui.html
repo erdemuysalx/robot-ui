@@ -11,18 +11,13 @@
 
     <body>
         <h1>Simple ROS User Interface</h1>
-        
-        <p><b>Connection status: </b><span id="status"></span></p>
-
-        <p>Click the "Listen" button to get the message from the related topic.</p>
-        
-        <input type="text" id="topic" value="Topic name...">
-
-        <button onclick="getTopicName()">Monitor</button>
-
-        <p> <span id="message"></span></p>
-        <p> <span id="topicnames"></span></p>
-        <p> <span id="topictypes"></span></p>
-
+        <p>Connection status: <span id="status"></span></p>
+        <p>Select the topic name from the drop-down list to listen message from the related topic.</p>
+        <select id="selector"></select>
+        <!-- <input type="text" id="topic" value="Topic name..."> -->
+        <!-- <button onclick="getTopicName()">Monitor</button> -->
+        <p><span id="message"></span></p>
+        <p><span id="topicnames"></span></p>
+        <p><span id="messagetypes"></span></p>
     </body>
 </html>
