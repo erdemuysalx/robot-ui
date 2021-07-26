@@ -52,47 +52,25 @@ topicsClient.callService(request, function(result) {
         topicName = split[0];
         messageType = split[1];
         console.log(split);
+
+        // Subscribing to a topic
+        // ----------------------
+        var listener = new ROSLIB.Topic({
+            ros : ros,
+            name : topicName,
+            messageType : messageType,
+        });
+
+        listener.subscribe(function(message) {
+            //document.write('Received message on ' + listener.name + ': ' + message.data + '</br>');
+            console.log(split);
+
+            document.getElementById("message").innerHTML = 'Received message on ' + listener.name + ': ' + message.data;
+        });
     }
 });
 
 
-// Subscribing to a topic
-// ----------------------
-var listener = new ROSLIB.Topic({
-    ros : ros,
-    name : split[0],
-    messageType : split[1],
-});
-
-listener.subscribe(function(message) {
-    //document.write('Received message on ' + listener.name + ': ' + message.data + '</br>');
-    console.log(split);
-
-    document.getElementById("message").innerHTML = 'Received message on ' + listener.name + ': ' + message.data;
-});
 
 
-/*
-// Publishing to a topic
-// ------------------
 
-var cmdVel = new ROSLIB.Topic({
-    ros : ros,
-    name : '/cmd_vel',
-    messageType : 'geometry_msgs/Twist'
-});
-
-var twist = new ROSLIB.Message({
-    linear : {
-        x : 0.1,
-        y : 0.2,
-        z : 0.3
-    },
-    angular : {
-        x : -0.1,
-        y : -0.2,
-        z : -0.3
-    }
-});
-cmdVel.publish(twist);
-*/
